@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strata Franchise Application - Homesafe Strata Inspections</title>
+  <meta name="description" content="Apply for a Homesafe Strata Inspections franchise. Takes about 15 minutes." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+      color: #1a1a1a;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      max-width: 760px;
+      width: 100%;
+      padding: 40px 48px 48px;
+    }
+    .logo { display: block; margin: 0 auto 28px; max-width: 300px; width: 100%; height: auto; }
+    h1 { font-size: 26px; color: #1a1a1a; margin-bottom: 8px; text-align: center; }
+    .subtitle {
+      font-size: 15px; color: #666; text-align: center;
+      margin-bottom: 12px; line-height: 1.5;
+    }
+    .roadmap {
+      background: #f7faf7; border: 1px solid #e2ebe2; border-radius: 6px;
+      padding: 16px 20px; margin: 20px 0 28px; font-size: 13px; color: #444;
+      line-height: 1.6;
+    }
+    .roadmap strong { color: #b7cc28; }
+    hr { border: none; border-top: 1px solid #eee; margin-bottom: 28px; }
+    .section-label {
+      font-size: 13px; font-weight: 700; color: #707070; text-transform: uppercase;
+      letter-spacing: 0.5px; margin: 36px 0 6px; border-top: 1px solid #eee;
+      padding-top: 24px;
+    }
+    .section-label:first-of-type { border-top: none; padding-top: 0; margin-top: 8px; }
+    .section-intro { font-size: 13px; color: #888; margin-bottom: 20px; line-height: 1.5; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 6px; line-height: 1.4; }
+    label .req { color: #c0392b; }
+    .field-desc { font-size: 12px; color: #888; margin: -2px 0 6px; line-height: 1.4; }
+    input[type=text], input[type=email], input[type=tel], input[type=date], select, textarea {
+      width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 4px;
+      font-size: 14px; font-family: Arial, sans-serif; color: #333;
+      transition: border-color 0.2s; background: #fff;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #b7cc28; }
+    textarea { resize: vertical; min-height: 90px; }
+    select { cursor: pointer; }
+    .scale {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+      border: 1px solid #ddd; border-radius: 4px; padding: 6px; background: #fafafa;
+    }
+    .scale label {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 10px 4px; border-radius: 3px; cursor: pointer;
+      font-size: 12px; font-weight: 500; color: #555; margin: 0;
+      text-align: center; line-height: 1.2; transition: background 0.15s;
+    }
+    .scale label:hover { background: #f1f6d7; }
+    .scale input[type=radio] { margin-bottom: 4px; accent-color: #b7cc28; }
+    .scale input[type=radio]:checked + span { color: #707070; font-weight: 700; }
+    .declaration {
+      background: #fafafa; border: 1px solid #ddd; border-radius: 4px;
+      padding: 16px; font-size: 13px; line-height: 1.6; color: #555;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+    .submit-btn {
+      background: #707070; color: #fff; border: none; padding: 14px 40px;
+      border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer;
+      width: 100%; margin-top: 20px; transition: background 0.2s;
+    }
+    .submit-btn:hover { background: #595959; }
+    .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+    .success-msg {
+      display: none; text-align: center; padding: 40px 20px;
+      color: #707070; font-size: 18px; font-weight: bold; line-height: 1.6;
+    }
+    .error-msg {
+      color: #c0392b; font-size: 13px; margin-top: 12px; display: none;
+      background: #fdecea; padding: 10px 14px; border-radius: 4px;
+      border: 1px solid #f5c6cb;
+    }
+    .footer {
+      text-align: center; font-size: 12px; color: #999; margin-top: 24px;
+    }
+    .footer a { color: #707070; text-decoration: none; }
+    @media (max-width: 600px) {
+      body { padding: 24px 12px 44px; }
+      .card { padding: 28px 20px 36px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 0; }
+      .scale label { font-size: 11px; padding: 8px 2px; }
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" src="assets/strata-logo.png" alt="Homesafe Strata Inspections" />
+  <h1>Franchise Application</h1>
+  <p class="subtitle">Join the Homesafe Strata Inspections Network. Takes about 15 minutes.</p>
+
+  <div class="roadmap">
+    <strong>What you'll cover:</strong>
+    Personal details &nbsp;·&nbsp;
+    Work history and relevant experience &nbsp;·&nbsp;
+    Business and client experience &nbsp;·&nbsp;
+    Research and motivation &nbsp;·&nbsp;
+    Self-assessment &nbsp;·&nbsp;
+    References &nbsp;·&nbsp;
+    Financial readiness &nbsp;·&nbsp;
+    Declarations
+  </div>
+
+  <hr />
+
+  <div id="form-wrap">
+    <form id="applicationForm" novalidate>
+      <div class="section-label">1. Personal Details</div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>First name <span class="req">*</span></label>
+          <input type="text" name="firstname" required />
+        </div>
+        <div class="form-group">
+          <label>Last name <span class="req">*</span></label>
+          <input type="text" name="lastname" required />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Email address <span class="req">*</span></label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label>Mobile number <span class="req">*</span></label>
+          <input type="tel" name="phone" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Home address - street address <span class="req">*</span></label>
+        <p class="field-desc">Street number and name.</p>
+        <input type="text" name="address" required />
+      </div>
+
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Suburb <span class="req">*</span></label>
+          <input type="text" name="city" required />
+        </div>
+        <div class="form-group">
+          <label>State <span class="req">*</span></label>
+          <input type="text" name="state" required />
+        </div>
+        <div class="form-group">
+          <label>Postcode <span class="req">*</span></label>
+          <input type="text" name="zip" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Do you hold a current Australian driver's licence? <span class="req">*</span></label>
+        <select name="strata_drivers_licence_status" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Current occupation / employer <span class="req">*</span></label>
+        <input type="text" name="strata_current_occupation_employer" required />
+      </div>
+
+      <div class="form-group">
+        <label>How did you hear about Homesafe Strata Inspections? <span class="req">*</span></label>
+        <input type="text" name="strata_how_heard" placeholder="e.g. Google, referral, franchise expo, social media, existing Homesafe contact" required />
+      </div>
+
+      <div class="section-label">2. Work History And Experience</div>
+
+      <div class="form-group">
+        <label>Please describe your previous job roles and work history <span class="req">*</span></label>
+        <p class="field-desc">Include employers, roles, industries, and approximate dates.</p>
+        <textarea name="strata_work_history" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Relevant experience <span class="req">*</span></label>
+        <p class="field-desc">Select all that apply.</p>
+        <textarea name="strata_relevant_experience" placeholder="Strata management, real estate, property management, conveyancing, insurance, legal administration, compliance, building/construction, customer service, sales, business ownership, administration, report writing, research/document review, or none." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Evidence or examples of relevant experience <span class="req">*</span></label>
+        <p class="field-desc">Roles held, responsibilities, documents reviewed, reports prepared, clients managed, or systems used.</p>
+        <textarea name="strata_relevant_experience_examples" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Education, licences, certificates, or training completed <span class="req">*</span></label>
+        <p class="field-desc">Formal qualifications, short courses, industry training, software training, or relevant professional development.</p>
+        <textarea name="strata_education_training" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Are you comfortable reviewing detailed property, strata, legal, financial, and compliance documents? <span class="req">*</span></label>
+        <select name="strata_comfort_document_review" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Somewhat">Somewhat</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Please describe your experience reading, reviewing, or summarising detailed documents <span class="req">*</span></label>
+        <p class="field-desc">Write N/A if none.</p>
+        <textarea name="strata_document_review_experience" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Are you comfortable preparing written reports for clients? <span class="req">*</span></label>
+        <select name="strata_comfort_report_writing" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Somewhat">Somewhat</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Please describe your report writing, written communication, or documentation experience <span class="req">*</span></label>
+        <p class="field-desc">Write N/A if none.</p>
+        <textarea name="strata_report_writing_experience" required></textarea>
+      </div>
+
+      <div class="section-label">3. Business And Client Experience</div>
+
+      <div class="form-group">
+        <label>Describe any previous business ownership experience <span class="req">*</span></label>
+        <p class="field-desc">Type of business, your role, and how long you operated it. Write N/A if none.</p>
+        <textarea name="strata_business_ownership_experience" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Have you previously owned or operated a franchise? <span class="req">*</span></label>
+        <select name="strata_previous_franchise_owner" id="previous_franchise_owner" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="previous_franchise_details_group" style="display:none">
+        <label>If yes - which brand(s) and for how long?</label>
+        <textarea name="strata_previous_franchise_details"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Do you have experience in sales or customer-facing roles? <span class="req">*</span></label>
+        <select name="strata_sales_customer_experience" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Somewhat">Somewhat</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Please describe your sales or customer service experience <span class="req">*</span></label>
+        <p class="field-desc">If none, write N/A.</p>
+        <textarea name="strata_sales_customer_experience_details" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Are you comfortable speaking with clients, agents, strata managers, solicitors, conveyancers, and office staff to request or clarify information? <span class="req">*</span></label>
+        <select name="strata_comfort_stakeholder_calls" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Somewhat">Somewhat</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Are you comfortable using online systems, cloud folders, templates, calendars, CRM tools, and reporting software? <span class="req">*</span></label>
+        <select name="strata_comfort_online_systems" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Somewhat">Somewhat</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>What software or online systems have you used in previous roles?</label>
+        <p class="field-desc">e.g. Monday.com, Google Workspace, Microsoft Office, CRM systems, property software, calendar systems.</p>
+        <textarea name="strata_software_systems_used"></textarea>
+      </div>
+
+      <div class="section-label">4. Research And Motivation</div>
+
+      <div class="form-group">
+        <label>What research have you done into Homesafe Strata Inspections or the strata inspection industry? <span class="req">*</span></label>
+        <p class="field-desc">e.g. read the information pack, reviewed the website, researched strata reports, spoken to people in property, reviewed competitors.</p>
+        <textarea name="strata_research_done" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Why do you want to own a Homesafe Strata Inspections franchise specifically? <span class="req">*</span></label>
+        <p class="field-desc">Please be specific. Generic answers will not help us understand your fit.</p>
+        <textarea name="strata_why_homesafe" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>What interests you about strata inspection work? <span class="req">*</span></label>
+        <p class="field-desc">For example: property, research, document analysis, client service, business ownership, flexible work structure.</p>
+        <textarea name="strata_interest_in_work" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>What skills or qualities would you bring to this business? <span class="req">*</span></label>
+        <p class="field-desc">Think about what will make you successful as a franchise partner, not just your past job titles.</p>
+        <textarea name="strata_skills_qualities" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Does your partner or immediate family support your interest in franchise ownership? <span class="req">*</span></label>
+        <select name="strata_family_support" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Not applicable">Not applicable</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Is there anything else you would like us to know about your application?</label>
+        <textarea name="strata_additional_info" placeholder="Optional"></textarea>
+      </div>
+
+      <div class="section-label">5. Self-Assessment</div>
+      <p class="section-intro">Rate each statement honestly - 1 = Strongly disagree, 5 = Strongly agree.</p>
+
+      <div id="scaleFields"></div>
+
+      <div class="section-label">6. References</div>
+      <p class="section-intro">Two professional references who can speak to your character, work history, and suitability.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Reference 1 - Name <span class="req">*</span></label>
+          <input type="text" name="strata_reference_1_name" required />
+        </div>
+        <div class="form-group">
+          <label>Reference 1 - Relationship to you <span class="req">*</span></label>
+          <input type="text" name="strata_reference_1_relationship" required />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Reference 1 - Phone number <span class="req">*</span></label>
+          <input type="tel" name="strata_reference_1_phone" required />
+        </div>
+        <div class="form-group">
+          <label>Reference 1 - Email address</label>
+          <input type="email" name="strata_reference_1_email" />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Reference 2 - Name <span class="req">*</span></label>
+          <input type="text" name="strata_reference_2_name" required />
+        </div>
+        <div class="form-group">
+          <label>Reference 2 - Relationship to you <span class="req">*</span></label>
+          <input type="text" name="strata_reference_2_relationship" required />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Reference 2 - Phone number <span class="req">*</span></label>
+          <input type="tel" name="strata_reference_2_phone" required />
+        </div>
+        <div class="form-group">
+          <label>Reference 2 - Email address</label>
+          <input type="email" name="strata_reference_2_email" />
+        </div>
+      </div>
+
+      <div class="section-label">7. Franchise Fit And Financial Readiness</div>
+
+      <div class="form-group">
+        <label>Do you have $25,000 or more capital available to invest? <span class="req">*</span></label>
+        <select name="strata_capital_available" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Partially">Partially</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>If no or partially, do you have a finance pathway or funding plan?</label>
+        <textarea name="strata_funding_plan" placeholder="Optional"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Territory of interest <span class="req">*</span></label>
+        <p class="field-desc">Suburb or region you would like to operate in.</p>
+        <input type="text" name="strata_territory_of_interest" required />
+      </div>
+
+      <div class="form-group">
+        <label>When are you looking to get started? <span class="req">*</span></label>
+        <select name="strata_start_timeline" required>
+          <option value="">Select...</option>
+          <option value="Immediately">Immediately</option>
+          <option value="0-3 months">0-3 months</option>
+          <option value="3-6 months">3-6 months</option>
+          <option value="6+ months">6+ months</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>How many hours per week could you dedicate to the business at launch? <span class="req">*</span></label>
+        <select name="strata_hours_per_week" required>
+          <option value="">Select...</option>
+          <option value="Less than 10">Less than 10</option>
+          <option value="10-20">10-20</option>
+          <option value="20-30">20-30</option>
+          <option value="Full-time">Full-time</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Are you looking to operate the business yourself, or with support from a partner/family member? <span class="req">*</span></label>
+        <select name="strata_operating_model" required>
+          <option value="">Select...</option>
+          <option value="Myself">Myself</option>
+          <option value="With support">With support</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+      </div>
+
+      <div class="section-label">8. Background Declarations</div>
+
+      <div class="form-group">
+        <label>Have you ever been convicted of a criminal offence? <span class="req">*</span></label>
+        <select name="strata_criminal_history" id="criminal_history" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="criminal_history_details_group" style="display:none">
+        <label>If yes - please provide brief details</label>
+        <p class="field-desc">Nature of offence, jurisdiction, and year.</p>
+        <textarea name="strata_criminal_history_details"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Have you ever been declared bankrupt or entered into a personal insolvency arrangement? <span class="req">*</span></label>
+        <select name="strata_bankruptcy_history" id="bankruptcy_history" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="bankruptcy_history_details_group" style="display:none">
+        <label>If yes - please provide brief details</label>
+        <textarea name="strata_bankruptcy_history_details" placeholder="Optional if not applicable"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Are there any legal, financial, employment, or personal circumstances that may affect your ability to operate a franchise business? <span class="req">*</span></label>
+        <select name="strata_other_circumstances" id="other_circumstances" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="other_circumstances_details_group" style="display:none">
+        <label>If yes - please provide brief details</label>
+        <textarea name="strata_other_circumstances_details" placeholder="Optional if not applicable"></textarea>
+      </div>
+
+      <div class="section-label">9. Declaration</div>
+
+      <div class="form-group">
+        <label>I confirm that the information provided in this application is true and correct to the best of my knowledge. <span class="req">*</span></label>
+        <select name="strata_declaration_true" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>I understand that providing false, misleading, or incomplete information may affect my application. <span class="req">*</span></label>
+        <select name="strata_declaration_misleading" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>I consent to Homesafe Strata Inspections contacting my nominated references as part of the application process. <span class="req">*</span></label>
+        <select name="strata_declaration_reference_consent" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="declaration">
+        Please type your name and today's date to sign this application.
+      </div>
+
+      <div class="grid-2" style="margin-top:18px">
+        <div class="form-group">
+          <label>Applicant signature <span class="req">*</span></label>
+          <input type="text" name="strata_applicant_signature" placeholder="Type or sign name" required />
+        </div>
+        <div class="form-group">
+          <label>Date <span class="req">*</span></label>
+          <input type="date" name="strata_application_date" required />
+        </div>
+      </div>
+
+      <input type="hidden" name="lifecyclestage" value="opportunity" />
+      <input type="hidden" name="franchise_application_type" value="strata" />
+
+      <div class="error-msg" id="errorMsg">Please complete all required fields.</div>
+      <button type="submit" class="submit-btn" id="submitBtn">Submit my application</button>
+    </form>
+  </div>
+
+  <div class="success-msg" id="successMsg">
+    Thank you for applying.<br/>
+    <span style="font-size:15px;font-weight:normal;color:#555;">Ryan will review your application and be in touch within 2 business days.</span>
+  </div>
+
+  <p class="footer">
+    Questions? Email <a href="mailto:franchise@homesafeinspections.com.au">franchise@homesafeinspections.com.au</a>
+  </p>
+</div>
+
+<script>
+  var HUBSPOT_FORM_ENDPOINT = '';
+  var SCALE_FIELDS = [
+    ['strata_self_motivated', 'I am self-motivated and able to work independently without supervision.'],
+    ['strata_self_document_detail', 'I am comfortable reading detailed documents and identifying key information.'],
+    ['strata_self_report_writing', 'I can prepare clear, accurate, professional written reports.'],
+    ['strata_self_detail_oriented', 'I am detail-oriented and comfortable following checklists and procedures.'],
+    ['strata_self_customer_service', 'Delivering exceptional customer service is a core value I hold.'],
+    ['strata_self_financial_plan', 'I understand the financial commitment involved and have a plan to fund it.'],
+    ['strata_self_resilience', 'I handle setbacks and slow periods without losing motivation.'],
+    ['strata_self_follows_systems', 'I prefer to follow proven systems and processes rather than do things my own way.'],
+    ['strata_self_long_term', 'I am committed to building this business for 5+ years, not a quick return.']
+  ];
+
+  function createScaleField(name, labelText) {
+    var group = document.createElement('div');
+    group.className = 'form-group';
+    group.innerHTML =
+      '<label>' + labelText + ' <span class="req">*</span></label>' +
+      '<div class="scale">' +
+      '<label><input type="radio" name="' + name + '" value="1" required /><span>1<br/>Disagree</span></label>' +
+      '<label><input type="radio" name="' + name + '" value="2" /><span>2</span></label>' +
+      '<label><input type="radio" name="' + name + '" value="3" /><span>3<br/>Neutral</span></label>' +
+      '<label><input type="radio" name="' + name + '" value="4" /><span>4</span></label>' +
+      '<label><input type="radio" name="' + name + '" value="5" /><span>5<br/>Agree</span></label>' +
+      '</div>';
+    return group;
+  }
+
+  function setupConditional(parentId, detailsGroupId) {
+    var parent = document.getElementById(parentId);
+    var group = document.getElementById(detailsGroupId);
+    if (!parent || !group) return;
+    function update() {
+      group.style.display = (parent.value === 'Yes') ? '' : 'none';
+    }
+    parent.addEventListener('change', update);
+    update();
+  }
+
+  var scaleWrap = document.getElementById('scaleFields');
+  SCALE_FIELDS.forEach(function(field) {
+    scaleWrap.appendChild(createScaleField(field[0], field[1]));
+  });
+
+  setupConditional('previous_franchise_owner', 'previous_franchise_details_group');
+  setupConditional('criminal_history', 'criminal_history_details_group');
+  setupConditional('bankruptcy_history', 'bankruptcy_history_details_group');
+  setupConditional('other_circumstances', 'other_circumstances_details_group');
+
+  document.getElementById('applicationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = document.getElementById('submitBtn');
+    var errorMsg = document.getElementById('errorMsg');
+    var required = form.querySelectorAll('input[required]:not([type=radio]), select[required], textarea[required]');
+    var valid = true;
+    var firstInvalid = null;
+
+    required.forEach(function(field) {
+      if (!field.value.trim()) {
+        valid = false;
+        field.style.borderColor = '#c0392b';
+        if (!firstInvalid) firstInvalid = field;
+      } else {
+        field.style.borderColor = '#ddd';
+      }
+    });
+
+    SCALE_FIELDS.forEach(function(field) {
+      var checked = form.querySelector('input[name="' + field[0] + '"]:checked');
+      var scale = form.querySelector('input[name="' + field[0] + '"]').closest('.scale');
+      if (!checked) {
+        valid = false;
+        if (scale) scale.style.borderColor = '#c0392b';
+        if (!firstInvalid) firstInvalid = scale;
+      } else if (scale) {
+        scale.style.borderColor = '#ddd';
+      }
+    });
+
+    if (!valid) {
+      errorMsg.textContent = 'Please complete all required fields (marked with *).';
+      errorMsg.style.display = 'block';
+      if (firstInvalid && firstInvalid.scrollIntoView) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    if (!HUBSPOT_FORM_ENDPOINT) {
+      errorMsg.textContent = 'This form is ready, but the Strata HubSpot form endpoint has not been configured yet.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    errorMsg.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    var data = new URLSearchParams();
+    form.querySelectorAll('input, select, textarea').forEach(function(el) {
+      if (!el.name) return;
+      if (el.type === 'radio') {
+        if (el.checked) data.append(el.name, el.value);
+      } else if (el.value) {
+        data.append(el.name, el.value);
+      }
+    });
+    data.append('hs_context', JSON.stringify({
+      pageUri: window.location.href,
+      pageName: 'Strata Franchise Application - Homesafe Strata Inspections'
+    }));
+
+    fetch(HUBSPOT_FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data.toString()
+    })
+    .then(function(resp) {
+      if (resp.ok || resp.status === 204) {
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit my application';
+        errorMsg.textContent = 'Something went wrong. Please try again, or email franchise@homesafeinspections.com.au.';
+        errorMsg.style.display = 'block';
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Submit my application';
+      errorMsg.textContent = 'Connection error. Please try again, or email franchise@homesafeinspections.com.au.';
+      errorMsg.style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
